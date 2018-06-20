@@ -1,0 +1,24 @@
+{
+  "name": "centrality-plugins",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@octokit/rest": "^15.2.6",
+    "cheerio": "^1.0.0-rc.2",
+    "firebase": "^4.12.1",
+    "js-sha512": "^0.7.1",
+    "lodash": "^4.17.5",
+    "moment": "^2.22.0",
+    "querystring": "^0.2.0",
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2",
+    "xml2js": "^0.4.19"
+  }
+}
