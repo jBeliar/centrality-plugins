@@ -20,7 +20,7 @@ const keyword = 'tran'
 exports.plugin = (tools, config) => {
   const preview = async (query, item, setInput) => {
 
-    const { key, languages: {first, second }} = config.key
+    const { key, languages: {first, second }} = config
 
     const lang = await detectLanguage(query, key)
     const secondLang = lang === second ? first : second
