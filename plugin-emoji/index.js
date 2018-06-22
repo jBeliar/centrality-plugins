@@ -1,14 +1,14 @@
-
 const request = require('request-promise')
 
-const url = query => `https://www.emojidex.com/api/v1/search/emoji?code_cont=${query}`
+const url = query => `https://emoji.getdango.com/api/emoji?q=${query}`
 
 const getEmojiList = query => request(url(query))
   .then(resp => {
-    return JSON.parse(resp).emoji.filter(e => e.moji).map(item=> ({
-      emoji: item.moji,
-      name: item.code
-    }))
+    return JSON.parse(resp).results
+      .map(item=> ({
+        emoji: item.text
+      })
+    )
   })
 
 /*****************************************************/
@@ -20,7 +20,7 @@ const queryResults = async query => {
   
   return words.map( word => ({
     /* path: word, */
-    value: `${word.emoji} ${word.name}`,
+    value: `${word.emoji}`,
     icon: ''
   }))
 }
