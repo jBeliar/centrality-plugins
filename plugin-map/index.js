@@ -1,7 +1,6 @@
 const name = 'Maps'
 const keyword = 'map'
 
-const previewOnEnter = true
 
 exports.plugin = (tools, config) => {
   const preview = query => {
@@ -21,7 +20,6 @@ exports.plugin = (tools, config) => {
     name,
     keyword,
     preview,
-    previewOnEnter
   }
 }
 exports.id = 'map'

@@ -107,14 +107,11 @@ const preview = async (query, item, setInput) => {
   }
 }
 
-const previewOnEnter = true
-
 exports.plugin = tools => {
   return {
     name,
     keyword,
     preview,
-    previewOnEnter,
     queryResults
   }
 }
