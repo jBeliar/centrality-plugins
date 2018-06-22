@@ -2,6 +2,7 @@ const icon = 'https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-128.p
 const searches = [
   { value: 'Allegro', path: 'https://allegro.pl/listing?order=qd&&offerTypeBuyNow=1&stan=nowe&string='},
   { value: 'Amazon', path: 'https://www.amazon.com/s?url=search-alias=aps&field-keywords='},
+  { value: 'DevDocs', path: 'http://devdocs.io/#q='},
   { value: 'DuckDuckGo', path: 'https://duckduckgo.com/?q='},
   { value: 'DuckDuckGoLucky', path: 'https://duckduckgo.com/?kl=pl-pl&q=!ducky+'},
   { value: 'Giphy', path: 'https://giphy.com/search/'},
