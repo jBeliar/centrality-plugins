@@ -29,6 +29,9 @@ const name = 'YT Trending'
 const keyword = 'trend'
 
 exports.plugin = (tools, config) => {
+  const onEnter = (query, item) => {
+    return tools.openExternal(item.path)
+  }
   const queryResults = async query => {
     return getList(config.key, config.regionCode)
   }
@@ -36,6 +39,7 @@ exports.plugin = (tools, config) => {
     name,
     keyword,
     queryResults,
+    onEnter
   }
 }
 exports.id = 'yttrending'

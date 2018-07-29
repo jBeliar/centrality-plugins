@@ -8,11 +8,7 @@ exports.plugin = (tools, config) => {
       return
     }
     return `
-    <iframe
-      width="100%"
-      height="410px"
-      frameborder="0" style="border:0"
-      src="https://www.google.com/maps/embed/v1/place?key=${config.key}&q=${query}&maptype=satellite" allowfullscreen>
+    <iframe src="https://www.google.com/maps/embed/v1/place?key=${config.key}&q=${query}&maptype=satellite">
     </iframe>
     `
   }
