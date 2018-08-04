@@ -34,11 +34,16 @@ const preview = async (query, item) => {
     ).join('<hr style="border: 1px solid black;"/>')
 }
 
+const config = {
+  async: true
+}
+
 exports.plugin = tools => {
   return {
     name,
     keyword,
     preview,
-    queryResults
+    queryResults,
+    config
   }
 }

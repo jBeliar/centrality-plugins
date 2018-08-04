@@ -1,8 +1,6 @@
 const request = require('request-promise')
 const cheerio = require('cheerio')
 
-
-// const getSearchUrl = t => `https://api.stackexchange.com/2.2/search/advanced?q=${t}&site=stackoverflow&sort=relevance`
 const getQuestionsUrl = id => `https://api.stackexchange.com/2.2/questions/${id}/answers?site=stackoverflow&filter=withbody&sort=votes`
 const url = t => `https://www.google.com/search?q=site%3Astackoverflow.com+${t}&sourceid=chrome&ie=UTF-8`
 
@@ -29,12 +27,18 @@ const queryResults = async query => {
   if (query === '') {
     return []
   }
+  
   return request(url(query)).then(result => {
-    const $ = cheerio.load(result)
-    return $('.r>a').map((i, item) => ({
-      title: $(item).text(),
-      url: $(item).attr('href').match(/\/url\?q\=([^&]*)/)[1]
-    })).toArray()
+    const $ = cheerio.load(result)    
+    const resultContainers = $('.g')
+    return resultContainers.map((i, item) => {
+      const titleNode = $(item).find('.r>a')
+      const title = `${titleNode.text()}`
+      return {
+        title: title,
+        url: titleNode.attr('href').match(/\/url\?q\=([^&]*)/)[1]
+      }
+    }).toArray()
   }).then(items => items.map(item => ({
       _path: item.url,
       value: prepareTitle(item.title)
@@ -59,12 +63,17 @@ const preview = async (query, item, setInput) => {
   }
 }
 
-exports.plugin = (tools, config) => {
+const config = {
+  async: true
+}
+
+exports.plugin = (tools, _config) => {
   return {
     name,
     keyword,
     preview,
-    queryResults
+    queryResults,
+    config
   }
 }
 exports.id = 'of'

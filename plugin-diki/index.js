@@ -97,7 +97,7 @@ const preview = async (query, item, setInput) => {
     return 'Enter the word to translate'
   }
   const q = item ? item.value : query
-  setInput(`d ${q}`)
+  await setInput(`d ${q}`)
   const { result, audioUrl } = await getContent(q)
   if (result) {
     new Audio(audioUrl).play()
@@ -107,11 +107,16 @@ const preview = async (query, item, setInput) => {
   }
 }
 
+const config = {
+  async: true
+}
+
 exports.plugin = tools => {
   return {
     name,
     keyword,
     preview,
-    queryResults
+    queryResults,
+    config
   }
 }

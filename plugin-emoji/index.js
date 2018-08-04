@@ -25,6 +25,10 @@ const queryResults = async query => {
   }))
 }
 
+const config = {
+  async: true
+}
+
 exports.plugin = tools => {
 
   const onEnter = async (query, item, setInput) => {
@@ -35,6 +39,7 @@ exports.plugin = tools => {
     name,
     keyword,
     onEnter,
-    queryResults
+    queryResults,
+    config
   }
 }
